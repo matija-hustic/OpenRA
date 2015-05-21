@@ -67,6 +67,8 @@ E1:
 	AttackFrontal:
 	WithInfantryBody:
 		AttackSequence: shoot
+	LevelupWhenCreated:
+		Prerequisites: barracks.upgraded
 
 E2:
 	Inherits: ^Soldier

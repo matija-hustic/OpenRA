@@ -18,7 +18,7 @@ using OpenRA.Traits;
 namespace OpenRA.Mods.Common.Traits
 {
 	[Desc("This actor's experience increases when it has killed a GivesExperience actor.")]
-	public class GainsExperienceInfo : ITraitInfo, Requires<ValuedInfo>
+	public class GainsExperienceInfo : ITraitInfo, Requires<ValuedInfo>, Requires<UpgradeManagerInfo>
 	{
 		[FieldLoader.LoadUsing("LoadUpgrades")]
 		[Desc("Upgrades to grant at each level",
@@ -56,6 +56,7 @@ namespace OpenRA.Mods.Common.Traits
 	{
 		readonly Actor self;
 		readonly GainsExperienceInfo info;
+		readonly UpgradeManager um;
 
 		readonly List<Pair<int, string[]>> nextLevel = new List<Pair<int, string[]>>();
 
@@ -77,18 +78,20 @@ namespace OpenRA.Mods.Common.Traits
 				nextLevel.Add(Pair.New(kv.Key * cost, kv.Value));
 
 			if (init.Contains<ExperienceInit>())
-				GiveExperience(init.Get<ExperienceInit, int>());
+				GiveExperience(init.Get<ExperienceInit, int>(), true);
+
+			um = self.Trait<UpgradeManager>();
 		}
 
 		public bool CanGainLevel { get { return Level < MaxLevel; } }
 
-		public void GiveLevels(int numLevels)
+		public void GiveLevels(int numLevels, bool silent = false)
 		{
 			var newLevel = Math.Min(Level + numLevels, MaxLevel);
-			GiveExperience(nextLevel[newLevel - 1].First - experience);
+			GiveExperience(nextLevel[newLevel - 1].First - experience, silent);
 		}
 
-		public void GiveExperience(int amount)
+		public void GiveExperience(int amount, bool silent = false)
 		{
 			experience += amount;
 
@@ -98,11 +101,12 @@ namespace OpenRA.Mods.Common.Traits
 
 				Level++;
 
-				var um = self.TraitOrDefault<UpgradeManager>();
-				if (um != null)
-					foreach (var u in upgrades)
-						um.GrantUpgrade(self, u, this);
+				foreach (var u in upgrades)
+					um.GrantUpgrade(self, u, this);
+			}
 
+			if (!silent)
+			{
 				Sound.PlayNotification(self.World.Map.Rules, self.Owner, "Sounds", "LevelUp", self.Owner.Country.Race);
 				self.World.AddFrameEndTask(w => w.Add(new CrateEffect(self, "levelup", info.LevelUpPalette)));
 			}

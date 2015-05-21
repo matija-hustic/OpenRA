@@ -1351,6 +1351,10 @@ BARR:
 	Power:
 		Amount: -20
 	ProvidesPrerequisite@buildingname:
+	InfiltrateForSupportPower:
+		Proxy: barracks.upgraded
+	TargetableBuilding:
+		TargetTypes: Ground, C4, DetonateAttack, Structure, SpyInfiltrate
 
 KENN:
 	Inherits: ^Building
@@ -1454,6 +1458,10 @@ TENT:
 	Power:
 		Amount: -20
 	ProvidesPrerequisite@buildingname:
+	InfiltrateForSupportPower:
+		Proxy: barracks.upgraded
+	TargetableBuilding:
+		TargetTypes: Ground, C4, DetonateAttack, Structure, SpyInfiltrate
 
 FIX:
 	Inherits: ^Building
