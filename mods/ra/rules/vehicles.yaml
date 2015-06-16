@@ -630,6 +630,8 @@ TTNK:
 		EmptyWeapon: UnitExplodeSmall
 	AutoSelectionSize:
 	RenderSprites:
+	GivesTeslaBoost:
+		GrantMultiple: 3
 
 FTRK:
 	Inherits: ^Vehicle

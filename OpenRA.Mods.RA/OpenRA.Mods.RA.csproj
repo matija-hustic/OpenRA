@@ -78,6 +78,7 @@
     <Compile Include="Activities\LayMines.cs" />
     <Compile Include="Activities\Leap.cs" />
     <Compile Include="Activities\Teleport.cs" />
+    <Compile Include="Activities\TeslaBoost.cs" />
     <Compile Include="Effects\GpsDot.cs" />
     <Compile Include="Effects\GpsSatellite.cs" />
     <Compile Include="Effects\SatelliteLaunch.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Scripting\Properties\ParatroopersProperties.cs" />
     <Compile Include="Traits\Render\WithDisguisingInfantryBody.cs" />
     <Compile Include="Traits\Render\WithDecorationDisguised.cs" />
+    <Compile Include="Traits\GivesTeslaBoost.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenRA.Game\OpenRA.Game.csproj">

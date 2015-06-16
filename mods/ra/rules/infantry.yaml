@@ -533,6 +533,7 @@ SHOK:
 		StandSequences: stand,stand2
 	Voiced:
 		VoiceSet: ShokVoice
+	GivesTeslaBoost:
 
 SNIPER:
 	Inherits: ^Infantry
@@ -634,7 +635,7 @@ Ant:
 	Armament:
 		Weapon: mandible
 	TargetableUnit:
-		TargetTypes: Ground, Infantry
+		TargetTypes: Ground, Infantry, TeslaBoost
 	WithDeathAnimation:
 		UseDeathTypeSuffix: false
 	Voiced:
