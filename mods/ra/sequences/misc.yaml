@@ -382,6 +382,10 @@ rank:
 	rank:
 		Length: *
 
+upgico:
+	upgico:
+		Length: *
+
 atomic:
 	up: atomicup
 		Length: *

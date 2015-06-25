@@ -20,17 +20,17 @@ namespace OpenRA.Mods.Common.Traits
 	public class ProductionIconOverlayInfo : ITraitInfo, Requires<TechTreeInfo>
 	{
 		[Desc("Image used for the overlay.")]
-		public readonly string Image = "rank";
+		public readonly string Image = "upgico";
 
 		[Desc("Sequence used for the overlay (cannot be animated).")]
-		public readonly string Sequence = "rank";
+		[SequenceReference("Image")] public readonly string Sequence = "upgico";
 
 		[Desc("Palette to render the sprite in. Reference the world actor's PaletteFrom* traits.")]
 		public readonly string Palette = "effect";
 
 		[Desc("Point on the production icon's used as reference for offsetting the overlay. ",
 			"Possible values are any combination of Top, VCenter, Bottom and Left, HCenter, Right separated by a comma.")]
-		public readonly ReferencePoints ReferencePoint = ReferencePoints.Top | ReferencePoints.Right;
+		public readonly ReferencePoints ReferencePoint = ReferencePoints.Top | ReferencePoints.Left;
 
 		[Desc("Pixel offset relative to the icon's reference point.")]
 		public readonly int2 Offset = int2.Zero;
@@ -47,7 +47,12 @@ namespace OpenRA.Mods.Common.Traits
 		public readonly string Palette;
 		public readonly float Scale;
 
+		// HACK: TechTree doesn't associate Watcher.Key with the registering ITechTreeElement.
+		// So in a situation where multiple ITechTreeElements register Watchers with the same Key,
+		// and one removes its Watcher, all other ITechTreeElements' Watchers get removed too.
+		// This makes sure that the keys are unique with respect to the registering ITechTreeElement.
 		const string Prefix = "ProductionIconOverlay.";
+
 		readonly Actor self;
 		readonly ProductionIconOverlayInfo info;
 

@@ -12,12 +12,12 @@ using OpenRA.Traits;
 
 namespace OpenRA.Mods.Common.Traits
 {
-	[Desc("Actors possessing this trait should define the GainsExperience trait beforehand. When the prerequisites are fulfilled, ",
+	[Desc("Actors possessing this trait should define the GainsExperience trait. When the prerequisites are fulfilled, ",
 		"this trait grants a level-up to newly spawned actors. If additionally the actor's owning player defines the CanUpgradeIcons ",
 		"trait, the production queue icon renders with an overlay defined in that trait.")]
-	public class LevelupWhenCreatedInfo : ITraitInfo
+	public class LevelupWhenCreatedInfo : ITraitInfo, Requires<GainsExperienceInfo>
 	{
-		public readonly string[] Prerequisites = null;
+		public readonly string[] Prerequisites = { };
 
 		[Desc("Number of levels to give to the actor on creation.")]
 		public readonly int InitialLevels = 1;
@@ -36,12 +36,14 @@ namespace OpenRA.Mods.Common.Traits
 
 		public void AddedToWorld(Actor self)
 		{
-			if (self.Owner.PlayerActor.Trait<TechTree>().HasPrerequisites(info.Prerequisites))
-			{
-				var ge = self.TraitOrDefault<GainsExperience>();
-				if (ge != null && ge.CanGainLevel)
-					ge.GiveLevels(info.InitialLevels, true);
-			}
+			if (!self.Owner.PlayerActor.Trait<TechTree>().HasPrerequisites(info.Prerequisites))
+				return;
+
+			var ge = self.Trait<GainsExperience>();
+			if (!ge.CanGainLevel)
+				return;
+
+			ge.GiveLevels(info.InitialLevels, true);
 		}
 	}
 }
