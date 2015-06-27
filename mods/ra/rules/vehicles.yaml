@@ -615,9 +615,16 @@ TTNK:
 		Crushes: wall, mine, crate, infantry
 	RevealsShroud:
 		Range: 7c0
-	Armament:
+	Armament@primary:
 		Weapon: TTankZap
 		LocalOffset: 0,0,213
+	Armament@charge:
+		Weapon: TTankCharge
+		LocalOffset: 0,0,213
+	AmmoPool:
+		PipCount: 0
+		SelfReloads: true
+		SelfReloadTicks: 25
 	AttackFrontal:
 	WithFacingSpriteBody:
 	WithIdleOverlay@SPINNER:
@@ -630,8 +637,6 @@ TTNK:
 		EmptyWeapon: UnitExplodeSmall
 	AutoSelectionSize:
 	RenderSprites:
-	GivesTeslaBoost:
-		GrantMultiple: 3
 
 FTRK:
 	Inherits: ^Vehicle

@@ -518,6 +518,13 @@ SHOK:
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: PortaTesla
+	Armament@charge:
+		Weapon: PortaCharge
+		LocalOffset: 427,0,341
+	AmmoPool:
+		PipCount: 0
+		SelfReloads: true
+		SelfReloadTicks: 25
 	AttackFrontal:
 		Voice: Attack
 	AttackMove:
@@ -533,7 +540,6 @@ SHOK:
 		StandSequences: stand,stand2
 	Voiced:
 		VoiceSet: ShokVoice
-	GivesTeslaBoost:
 
 SNIPER:
 	Inherits: ^Infantry
