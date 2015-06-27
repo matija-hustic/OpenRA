@@ -182,7 +182,7 @@ PortaTesla:
 PortaCharge:
 	ReloadDelay: 25
 	Range: 2c0
-	Report: TESLA1.AUD
+	Report: TESLACHARGE.AUD
 	Charges: yes
 	ValidStances: Ally
 	ValidTargets: TeslaBoost
@@ -193,7 +193,7 @@ PortaCharge:
 		Duration: 30
 		Upgrades: tesla
 		ValidStances: Ally
-		ValidTargets: TeslaBoost		
+		ValidTargets: TeslaBoost
 
 TTankZap:
 	ReloadDelay: 120
@@ -211,7 +211,7 @@ TTankZap:
 TTankCharge:
 	ReloadDelay: 25
 	Range: 2c0
-	Report: TESLA1.AUD
+	Report: TESLACHARGE.AUD
 	Charges: yes
 	ValidStances: Ally
 	ValidTargets: TeslaBoost
