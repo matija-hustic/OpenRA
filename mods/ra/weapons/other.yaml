@@ -179,6 +179,22 @@ PortaTesla:
 			None: 1000
 		DamageTypes: Prone50Percent, TriggerProne, ElectricityDeath
 
+PortaCharge:
+	ReloadDelay: 25
+	Range: 2c0
+	Report: TESLACHARGE.AUD
+	Charges: yes
+	ValidStances: Ally
+	ValidTargets: TeslaBoost
+	Projectile: TeslaZap
+		Image: litningupg
+	Warhead@charge: GrantUpgrade
+		Spread: 42
+		Duration: 30
+		Upgrades: tesla
+		ValidStances: Ally
+		ValidTargets: TeslaBoost
+
 TTankZap:
 	ReloadDelay: 120
 	Range: 7c0
@@ -191,6 +207,22 @@ TTankZap:
 		Versus:
 			None: 1000
 		DamageTypes: Prone50Percent, TriggerProne, ElectricityDeath
+
+TTankCharge:
+	ReloadDelay: 25
+	Range: 2c0
+	Report: TESLACHARGE.AUD
+	Charges: yes
+	ValidStances: Ally
+	ValidTargets: TeslaBoost
+	Projectile: TeslaZap
+		Image: litningupg
+	Warhead@charge: GrantUpgrade
+		Spread: 42
+		Duration: 30
+		Upgrades: tesla, tesla, tesla
+		ValidStances: Ally
+		ValidTargets: TeslaBoost
 
 DogJaw:
 	ValidTargets: Infantry
