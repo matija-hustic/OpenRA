@@ -160,7 +160,7 @@ litning:
 litningupg:
 	bright:
 		Length: 4
-	dim:
+	dim: litning
 		Start: 4
 		Length: 4
 
