@@ -382,9 +382,10 @@ rank:
 	rank:
 		Length: *
 
-upgico:
-	upgico:
+cameo-chevron:
+	idle:
 		Length: *
+		BlendMode: Additive
 
 atomic:
 	up: atomicup

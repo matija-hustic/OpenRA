@@ -67,5 +67,7 @@ Player:
 	EnemyWatcher:
 	ProductionIconOverlay:
 		Offset: 2, 2
-		Scale: 0.75
+		Image: cameo-chevron
+		Sequence: idle
+		Palette: cameo-chevron
 
