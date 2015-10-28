@@ -73,10 +73,10 @@ namespace OpenRA
 				return new WAngle(Math.Sign(y) * 256);
 
 			var ay = Math.Abs(y);
-			var ax = Math.Abs(x);
+			var ax = (long)Math.Abs(x);
 
 			// Find the closest angle that satisfies y = x*tan(theta)
-			var bestVal = int.MaxValue;
+			var bestVal = (long)int.MaxValue;
 			var bestAngle = 0;
 			for (var i = 0; i < 256; i += stride)
 			{
